@@ -1,2 +1,2 @@
-# site_ws
-Site config for Domäne Weinstrasse
+# site_wsn
+Site config for Domäne Weinstrasse Nord (NW/DÜW)
