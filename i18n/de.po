@@ -49,7 +49,7 @@ msgstr ""
 "Um deinen Knoten auf der Karte anzeigen zu können, benötigen wir seine "
 "Koordinaten. Hier hast du die Möglichkeit, diese zu hinterlegen. "
 "Die Koordinaten kann man u.a. über die Karte auf unserer Homepage ermitteln. "
-"(Mit Hilfe "der Stecknadel in der rechten oberen Ecke)"
+"(Mit Hilfe der Stecknadel in der rechten oberen Ecke)"
 
 msgid ""
 "Please provide your contact information here to allow others to contact "
