@@ -58,3 +58,6 @@ msgid ""
 msgstr ""
 "Bitte hinterlege hier eine eMail-Adresse, um uns zu ermöglichen, "
 "bei Bedarf Kontakt mit Dir aufzunehmen. 
+
+msgid "e.g. E-mail or phone number"
+msgstr "E-Mail Adresse"
