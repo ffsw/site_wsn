@@ -73,3 +73,5 @@ msgstr ""
 "zum Freifunk-Netz und darüber ins Internet aufzubauen. (VPN über L2TP) "
 "<br />Die dafür genutzte Bandbreite kannst du beschränken."
 
+msgid "Use internet connection (mesh VPN via L2TP)"
+msgstr "Internetverbindung nutzen (VPN via L2TP)"
