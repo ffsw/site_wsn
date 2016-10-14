@@ -71,5 +71,5 @@ msgid ""
 msgstr ""
 "Dein Knoten kann deine Internetverbindung nutzen, um darüber eine "
 "L2TP-VPN Verbindung zum Freifunk-Netz und darüber ins Internet aufzubauen."
-"<br>Die dafür genutzte Bandbreite kannst du beschränken."
+"<br />Die dafür genutzte Bandbreite kannst du beschränken."
 
