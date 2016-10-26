@@ -119,7 +119,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v016g
+DEFAULT_GLUON_RELEASE := ffwsn-v016j
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
@@ -130,10 +130,16 @@ DEFAULT_GLUON_RELEASE := ffwsn-v016g
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
-GLUON_REGION := eu
+
+# For TP-Link Archer C7 needed
+GLUON_REGION ?= eu
 
 # Default priority for updates.
 GLUON_PRIORITY ?= 0
 
+# Default branch for autoupdater.
+GLUON_BRANCH ?= stable
+
 # Languages to include
 GLUON_LANGS ?= en de
+
