@@ -1,3 +1,4 @@
+##      ffwsn-site.mk
 GLUON_SITE_PACKAGES := \
         gluon-mesh-batman-adv-15 \
         gluon-authorized-keys \
@@ -32,6 +33,31 @@ GLUON_SITE_PACKAGES := \
         ffsw-keyupl \
         iwinfo
 
+# add offline ssid only if the target has wifi device
+ifeq ($(GLUON_TARGET),ar71xx-generic)
+GLUON_SITE_PACKAGES += \
+	ffsw-ssid-changer
+endif
+
+ifeq ($(GLUON_TARGET),ar71xx-mikrotik)
+GLUON_SITE_PACKAGES += \
+	ffsw-ssid-changer
+endif
+
+ifeq ($(GLUON_TARGET),ar71xx-nand)
+GLUON_SITE_PACKAGES += \
+	ffsw-ssid-changer
+endif
+
+ifeq ($(GLUON_TARGET),mpc85xx-generic)
+GLUON_SITE_PACKAGES += \
+	ffsw-ssid-changer
+endif
+
+ifeq ($(GLUON_TARGET),ramips-rt305x)
+GLUON_SITE_PACKAGES += \
+	ffsw-ssid-changer
+endif
 # support the USB stack
 USB_PACKAGES_BASIC := \
         kmod-usb-core \
@@ -119,7 +145,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v016j
+DEFAULT_GLUON_RELEASE := ffwsn-v017
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
@@ -131,14 +157,11 @@ DEFAULT_GLUON_RELEASE := ffwsn-v016j
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 
-# For TP-Link Archer C7 needed
+# Region code required for some images; supported values: us eu
 GLUON_REGION ?= eu
 
 # Default priority for updates.
 GLUON_PRIORITY ?= 0
-
-# Default branch for autoupdater.
-GLUON_BRANCH ?= stable
 
 # Languages to include
 GLUON_LANGS ?= en de
