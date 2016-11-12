@@ -160,6 +160,9 @@ GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 # Region code required for some images; supported values: us eu
 GLUON_REGION ?= eu
 
+#required for ath10k devices like C5/C7
+GLUON_ATH10K_MESH ?= 11s
+
 # Default priority for updates.
 GLUON_PRIORITY ?= 0
 
