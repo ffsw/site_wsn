@@ -31,7 +31,8 @@ GLUON_SITE_PACKAGES := \
         ffsw-reboot \
         ffsw-chkgw \
         ffsw-keyupl \
-        iwinfo
+        iwinfo \
+	ffffm-additional-wifi-json-info
 
 # add offline ssid only if the target has wifi device
 ifeq ($(GLUON_TARGET),ar71xx-generic)
