@@ -2,7 +2,7 @@
 GLUON_SITE_PACKAGES := \
         gluon-mesh-batman-adv-15 \
         gluon-authorized-keys \
-        ffpb-ebtables-net-rules \
+        ffho-ebtables-net-rules \
         gluon-alfred \
         gluon-respondd\
         gluon-autoupdater \
@@ -153,7 +153,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v023
+DEFAULT_GLUON_RELEASE := ffwsn-v024
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
