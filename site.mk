@@ -20,12 +20,12 @@ GLUON_SITE_PACKAGES := \
         gluon-web-private-wifi \
         gluon-web-wifi-config \
         gluon-mesh-batman-adv-15 \
-        gluon-mesh-vpn-tunneldigger \						 
+        gluon-mesh-vpn-tunneldigger \
         gluon-radvd \
         gluon-setup-mode \
         gluon-status-page \
         haveged \
-        iptables \									 						   
+        iptables \
         ffsw-reboot \
         ffsw-chkgw \
         ffsw-keyupl \
@@ -39,7 +39,7 @@ ifeq ($(GLUON_TARGET),ar71xx-generic)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \								  
+	ffsw-wifi-quickfix \
 	ffffm-button-bind
 endif
 
@@ -47,7 +47,7 @@ ifeq ($(GLUON_TARGET),ar71xx-tiny)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \								  
+	ffsw-wifi-quickfix \
 	ffffm-button-bind
 endif
 
@@ -55,11 +55,11 @@ ifeq ($(GLUON_TARGET),ar71xx-nand)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \	
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix								  				  
+	ffsw-wifi-quickfix
 endif
 
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-GLUON_SITE_PACKAGES += \										 
+GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
@@ -215,7 +215,6 @@ DEFAULT_GLUON_RELEASE := ffwsn-v028b
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
-
 # Region code required for some images; supported values: us eu
 GLUON_REGION ?= eu
 
@@ -227,4 +226,3 @@ GLUON_PRIORITY ?= 0
 
 # Languages to include
 GLUON_LANGS ?= en de
-
