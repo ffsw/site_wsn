@@ -1,4 +1,4 @@
-GLUON_SITE_FEEDS='ffrl ffsw'
+GLUON_SITE_FEEDS='ffsw'
 
 PACKAGES_FFSW_REPO='https://github.com/ffsw/packages.git'
 PACKAGES_FFSW_COMMIT=ea2dbba1eb3c288c8a97fde0a782d23d4bc443b6
