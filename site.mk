@@ -31,7 +31,7 @@ GLUON_SITE_PACKAGES := \
         ffsw-keyupl \
         iwinfo \
         ffsw-banner \
-	    iperf3
+	iperf3
 
 
 # add offline ssid only if the target has wifi device
@@ -39,8 +39,7 @@ ifeq ($(GLUON_TARGET),ar71xx-generic)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-								  
+	ffsw-wifi-quickfix \								  
 	ffffm-button-bind
 endif
 
@@ -48,8 +47,7 @@ ifeq ($(GLUON_TARGET),ar71xx-tiny)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-								  
+	ffsw-wifi-quickfix \								  
 	ffffm-button-bind
 endif
 
@@ -57,15 +55,11 @@ ifeq ($(GLUON_TARGET),ar71xx-nand)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \	
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix
-								  
-				  
+	ffsw-wifi-quickfix								  				  
 endif
 
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-GLUON_SITE_PACKAGES += \
-					
-					 
+GLUON_SITE_PACKAGES += \										 
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
