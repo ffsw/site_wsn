@@ -11,70 +11,80 @@ GLUON_SITE_PACKAGES := \
         gluon-config-mode-core \
         gluon-config-mode-geo-location \
         gluon-config-mode-hostname \
-        gluon-config-mode-tunneldigger \
+        gluon-config-mode-mesh-vpn \
         gluon-ebtables-filter-multicast \
         gluon-ebtables-filter-ra-dhcp \
-        gluon-luci-admin \
-        gluon-luci-autoupdater \
-        gluon-luci-portconfig \
-        gluon-luci-private-wifi \
-        gluon-luci-wifi-config \
-        gluon-mesh-vpn-tunneldigger \
-        gluon-next-node \
+        gluon-web-admin \
+        gluon-web-autoupdater \
+        gluon-web-network \
+        gluon-web-private-wifi \
+        gluon-web-wifi-config \
+        gluon-mesh-batman-adv-15 \
+        gluon-mesh-vpn-tunneldigger \						 
         gluon-radvd \
         gluon-setup-mode \
         gluon-status-page \
         haveged \
-        iptables \
-        gluon-tunneldigger-watchdog \
-        gluon-migrate-vpn \
+        iptables \									 						   
         ffsw-reboot \
         ffsw-chkgw \
         ffsw-keyupl \
         iwinfo \
-	ffsw-banner
-	
+        ffsw-banner \
+	    iperf3
+
 
 # add offline ssid only if the target has wifi device
 ifeq ($(GLUON_TARGET),ar71xx-generic)
 GLUON_SITE_PACKAGES += \
+	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix \
-	ffffm-additional-wifi-json-info \
+								  
 	ffffm-button-bind
 endif
 
-ifeq ($(GLUON_TARGET),ar71xx-mikrotik)
+ifeq ($(GLUON_TARGET),ar71xx-tiny)
 GLUON_SITE_PACKAGES += \
+	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix \
-	ffffm-additional-wifi-json-info \
+								  
 	ffffm-button-bind
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-nand)
 GLUON_SITE_PACKAGES += \
+	ffffm-additional-wifi-json-info \	
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
+	ffsw-wifi-quickfix
+								  
+				  
+endif
+
+ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
+GLUON_SITE_PACKAGES += \
+					
+					 
 	ffffm-additional-wifi-json-info \
-	ffffm-button-bind
+	ffsw-ssid-changer \
+	ffsw-wifi-quickfix
+endif
+
+ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
+GLUON_SITE_PACKAGES += \
+	ffffm-additional-wifi-json-info \
+	ffsw-ssid-changer \
+	ffsw-wifi-quickfix
 endif
 
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
 GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
 	ffffm-additional-wifi-json-info \
-	ffffm-button-bind
+	ffsw-ssid-changer \
+	ffsw-wifi-quickfix
 endif
 
-ifeq ($(GLUON_TARGET),ramips-rt305x)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-additional-wifi-json-info \
-	ffffm-button-bind
-endif
 # support the USB stack
 USB_PACKAGES_BASIC := \
         kmod-usb-core \
@@ -145,6 +155,17 @@ GLUON_SITE_PACKAGES += \
         $(TOOLS_PACKAGES)
 endif
 
+ifeq ($(GLUON_TARGET),x86-geode)
+# support the usb stack on x86 devices
+# and add a few common USB NICs
+GLUON_SITE_PACKAGES += \
+        kmod-usb-hid \
+        $(USB_PACKAGES_BASIC) \
+        $(USB_PACKAGES_STORAGE) \
+        $(USB_PACKAGES_NET) \
+        $(TOOLS_PACKAGES)
+endif
+
 ifeq ($(GLUON_TARGET),x86-64)
 # support the usb stack on x86 devices
 # and add a few common USB NICs
@@ -156,13 +177,40 @@ GLUON_SITE_PACKAGES += \
         $(TOOLS_PACKAGES)
 endif
 
+##wifi-button pacakge only on some ar71-models ############################
+	GLUON_tp-link-tl-wr740n-nd-v1_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr740n-nd-v2_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr740n-nd-v3_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr740n-nd-v4_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr740n-nd-v5_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr741n-nd-v1_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr741n-nd-v2_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr741n-nd-v3_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr741n-nd-v4_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr741n-nd-v5_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr841n-nd-v8_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr841n-nd-v9_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr841n-nd-v10_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr841n-nd-v11_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr841n-nd-v12_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr842n-nd-v1_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr842n-nd-v2_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr842n-nd-v3_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr1043n-nd-v1_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr1043n-nd-v2_SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr1043n-nd-v3SITE_PACKAGES := ffffm-button-bind
+	GLUON_tp-link-tl-wr1043n-nd-v4_SITE_PACKAGES := ffffm-button-bind
+	#C25 zu Testzwecken mit aufgenommen
+	GLUON_tp-link-archer-c25-v1_SITE_PACKAGES := ffffm-button-bind	
+###########################################################################
+
 ##      DEFAULT_GLUON_RELEASE
 #               version string to use for images
 #               gluon relies on
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v025
+DEFAULT_GLUON_RELEASE := ffwsn-v028b
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
