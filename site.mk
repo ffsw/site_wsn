@@ -3,7 +3,6 @@ GLUON_SITE_PACKAGES := \
         gluon-mesh-batman-adv-15 \
         gluon-authorized-keys \
         ffho-ebtables-net-rules \
-        gluon-alfred \
         gluon-respondd\
         gluon-autoupdater \
         gluon-config-mode-autoupdater \
@@ -33,6 +32,9 @@ GLUON_SITE_PACKAGES := \
         ffsw-banner \
 	iperf3
 
+#No Wifi Info 
+NO_WIFI_INFO := \
+	-ffffm-additional-wifi-json-info \
 
 # add offline ssid only if the target has wifi device
 ifeq ($(GLUON_TARGET),ar71xx-generic)
@@ -195,8 +197,14 @@ endif
 	GLUON_tp-link-tl-wr1043n-nd-v3SITE_PACKAGES := ffffm-button-bind
 	GLUON_tp-link-tl-wr1043n-nd-v4_SITE_PACKAGES := ffffm-button-bind
 	#C25 zu Testzwecken mit aufgenommen
-	GLUON_tp-link-archer-c25-v1_SITE_PACKAGES := ffffm-button-bind	
+	#GLUON_tp-link-archer-c25-v1_SITE_PACKAGES := ffffm-button-bind	
+	#Alle Archer ohne Wifi-Info
+	GLUON_tp-link-archer-c25-v1_SITE_PACKAGES += $(NO_WIFI_INFO)
+	GLUON_tp-link-archer-c7-v2_SITE_PACKAGES += $(NO_WIFI_INFO)
+	GLUON_tp-link-archer-c5-v1_SITE_PACKAGES += $(NO_WIFI_INFO)
+	
 ###########################################################################
+
 
 ##      DEFAULT_GLUON_RELEASE
 #               version string to use for images
@@ -204,7 +212,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v030
+DEFAULT_GLUON_RELEASE := ffwsn-v032
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
