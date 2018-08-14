@@ -201,6 +201,7 @@ endif
 	#Alle Archer ohne Wifi-Info
 	GLUON_tp-link-archer-c25-v1_SITE_PACKAGES += $(NO_WIFI_INFO)
 	GLUON_tp-link-archer-c7-v2_SITE_PACKAGES += $(NO_WIFI_INFO)
+	GLUON_tp-link-archer-c7-v4_SITE_PACKAGES += $(NO_WIFI_INFO)
 	GLUON_tp-link-archer-c5-v1_SITE_PACKAGES += $(NO_WIFI_INFO)
 	
 ###########################################################################
@@ -212,7 +213,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v032
+DEFAULT_GLUON_RELEASE := ffwsn-v033
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
