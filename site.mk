@@ -1,36 +1,37 @@
-##      ffwsn-site.mk
-GLUON_SITE_PACKAGES := \
-        gluon-mesh-batman-adv-15 \
-        gluon-authorized-keys \
-        ffho-ebtables-net-rules \
-        gluon-respondd\
-        gluon-autoupdater \
-        gluon-config-mode-autoupdater \
-        gluon-config-mode-contact-info \
-        gluon-config-mode-core \
-        gluon-config-mode-geo-location \
-        gluon-config-mode-hostname \
-        gluon-config-mode-mesh-vpn \
-        gluon-ebtables-filter-multicast \
-        gluon-ebtables-filter-ra-dhcp \
-        gluon-web-admin \
-        gluon-web-autoupdater \
-        gluon-web-network \
-        gluon-web-private-wifi \
-        gluon-web-wifi-config \
-        gluon-mesh-batman-adv-15 \
-        gluon-mesh-vpn-tunneldigger \
-        gluon-radvd \
-        gluon-setup-mode \
-        gluon-status-page \
-        haveged \
-        iptables \
-        ffsw-reboot \
-        ffsw-chkgw \
-        ffsw-keyupl \
-        iwinfo \
-        ffsw-banner \
-	iperf3
+##		ffwss-site.mk
+
+##	GLUON_FEATURES
+#		Specify Gluon features/packages to enable;
+#		Gluon will automatically enable a set of packages
+#		depending on the combination of features listed
+
+GLUON_FEATURES := \
+	autoupdater \
+	ebtables-filter-multicast \
+	ebtables-filter-ra-dhcp \
+	ebtables-source-filter \
+	mesh-batman-adv-15 \
+	mesh-vpn-tunneldigger \
+	radvd \
+	respondd \
+	status-page \
+	web-advanced \
+	web-wizard \
+
+# radv-filterd\ erstmal weglassen - nicht sicher obs zusammen mit ebtables-filter-ra-dhcp funktioniert
+
+
+##	GLUON_SITE_PACKAGES
+#		Specify additional Gluon/LEDE packages to include here;
+#		A minus sign may be prepended to remove a packages from the
+#		selection that would be enabled by default or due to the
+#		chosen feature flags
+GLUON_SITE_PACKAGES :=	gluon-config-mode-geo-location-osm \
+			gluon-authorized-keys \
+			haveged ffsw-reboot \
+			ffsw-chkgw ffsw-keyupl \
+			iwinfo ffsw-banner \
+			iperf3
 
 #No Wifi Info 
 NO_WIFI_INFO := \
@@ -39,46 +40,50 @@ NO_WIFI_INFO := \
 # add offline ssid only if the target has wifi device
 ifeq ($(GLUON_TARGET),ar71xx-generic)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
+	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-tiny)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
+	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-nand)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \	
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
 GLUON_SITE_PACKAGES += \
-	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
 	ffsw-wifi-quickfix
+	#ffffm-button-bind     --button-bind muss angepasst werden
+	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
 endif
 
 # support the USB stack
@@ -213,7 +218,8 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v033
+DEFAULT_GLUON_RELEASE := ffwsn-v036
+
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
@@ -227,11 +233,10 @@ GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 # Region code required for some images; supported values: us eu
 GLUON_REGION ?= eu
 
-#required for ath10k devices like C5/C7
-GLUON_ATH10K_MESH ?= 11s
-
 # Default priority for updates.
 GLUON_PRIORITY ?= 0
 
 # Languages to include
 GLUON_LANGS ?= en de
+
+GLUON_MULTIDOMAIN=0
