@@ -41,16 +41,14 @@ ifeq ($(GLUON_TARGET),ar71xx-generic)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
+	ffsw-wifi-quickfix 
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-tiny)
 GLUON_SITE_PACKAGES += \
 	ffffm-additional-wifi-json-info \
 	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
+	ffsw-wifi-quickfix 
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-nand)
@@ -212,7 +210,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v032
+DEFAULT_GLUON_RELEASE := ffwsn-v033
 
 #       GLUON_RELEASE
 #               call make with custom GLUON_RELEASE flag, to use your own release version scheme.
