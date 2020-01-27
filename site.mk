@@ -12,7 +12,6 @@ GLUON_FEATURES := \
 	ebtables-source-filter \
 	mesh-batman-adv-15 \
 	mesh-vpn-tunneldigger \
-	radvd \
 	respondd \
 	status-page \
 	web-advanced \
@@ -31,59 +30,34 @@ GLUON_SITE_PACKAGES :=	gluon-config-mode-geo-location-osm \
 			haveged ffsw-reboot \
 			ffsw-chkgw ffsw-keyupl \
 			iwinfo ffsw-banner \
-			iperf3
+			iperf3 \
+			ffsw-ssid-changer \
+			ffsw-wifi-quickfix \
+			ffffm-button-bind \
+			respondd-module-airtime
 
 #No Wifi Info 
 NO_WIFI_INFO := \
-	-ffffm-additional-wifi-json-info \
+	-respondd-module-airtime \
 
-# add offline ssid only if the target has wifi device
-ifeq ($(GLUON_TARGET),ar71xx-generic)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind    
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
+#no wifi in x86 targets
+ifeq ($(GLUON_TARGET),x86-generic)
+	NO_WIFI := TRUE
+endif
+ifeq ($(GLUON_TARGET),x86-geode)
+	NO_WIFI := TRUE
+endif
+ifeq ($(GLUON_TARGET),x86-64)
+	NO_WIFI := TRUE
 endif
 
-ifeq ($(GLUON_TARGET),ar71xx-tiny)
+#if NO_WIFI is dfined, remove these packages
+ifdef NO_WIFI
 GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
-endif
-
-ifeq ($(GLUON_TARGET),ar71xx-nand)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
-endif
-
-ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
-endif
-
-ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
-endif
-
-ifeq ($(GLUON_TARGET),mpc85xx-generic)
-GLUON_SITE_PACKAGES += \
-	ffsw-ssid-changer \
-	ffsw-wifi-quickfix \
-	ffffm-button-bind
-	#ffffm-additional-wifi-json-info   --funzt in 2018 nicht	
+		-ffsw-ssid-changer \
+		-ffsw-wifi-quickfix \
+		-ffffm-button-bind \
+		-respondd-module-airtime
 endif
 
 # support the USB stack
@@ -218,7 +192,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v040
+DEFAULT_GLUON_RELEASE := ffwsn-v040a
 
 
 #       GLUON_RELEASE
