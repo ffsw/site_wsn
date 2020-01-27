@@ -33,8 +33,8 @@ GLUON_SITE_PACKAGES :=	gluon-config-mode-geo-location-osm \
 			iperf3 \
 			ffsw-ssid-changer \
 			ffsw-wifi-quickfix \
-			ffffm-button-bind \
-			respondd-module-airtime
+			ffffm-button-bind
+			#respondd-module-airtime
 
 #No Wifi Info 
 NO_WIFI_INFO := \
