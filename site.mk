@@ -192,7 +192,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v041
+DEFAULT_GLUON_RELEASE := ffwsn-v042
 
 
 #       GLUON_RELEASE
