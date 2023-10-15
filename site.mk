@@ -15,10 +15,9 @@ GLUON_FEATURES := \
 	respondd \
 	status-page \
 	web-advanced \
-	web-wizard \
+	web-wizard
 
-# radv-filterd\ erstmal weglassen - nicht sicher obs zusammen mit ebtables-filter-ra-dhcp funktioniert
-
+GLUON_FEATURES_standard := wireless-encryption-wpa3
 
 ##	GLUON_SITE_PACKAGES
 #		Specify additional Gluon/LEDE packages to include here;
@@ -33,13 +32,7 @@ GLUON_SITE_PACKAGES :=	gluon-config-mode-geo-location-osm \
 			iwinfo ffsw-banner \
 			iperf3 \
 			ffsw-ssid-changer \
-			ffsw-wifi-quickfix \
-			ffffm-button-bind
-			#respondd-module-airtime
-
-#No Wifi Info 
-NO_WIFI_INFO := \
-	-respondd-module-airtime \
+			ffsw-wifi-quickfix
 
 #no wifi in x86 targets
 ifeq ($(GLUON_TARGET),x86-generic)
@@ -54,11 +47,9 @@ endif
 
 #if NO_WIFI is dfined, remove these packages
 ifdef NO_WIFI
-GLUON_SITE_PACKAGES += \
+	GLUON_SITE_PACKAGES += \
 		-ffsw-ssid-changer \
-		-ffsw-wifi-quickfix \
-		-ffffm-button-bind \
-		-respondd-module-airtime
+		-ffsw-wifi-quickfix
 endif
 
 # support the USB stack
@@ -193,7 +184,7 @@ endif
 #                       opkg compare-versions "$1" '>>' "$2"
 #               to decide if a version is newer or not.
 
-DEFAULT_GLUON_RELEASE := ffwsn-v047
+DEFAULT_GLUON_RELEASE := ffwsn-v051
 
 
 #       GLUON_RELEASE
@@ -217,4 +208,4 @@ GLUON_LANGS ?= en de
 GLUON_MULTIDOMAIN=0
 
 # build images for deprecated devices (e.g. ar71xx-tiny)
-GLUON_DEPRECATED ?= full
+GLUON_DEPRECATED ?= 0
